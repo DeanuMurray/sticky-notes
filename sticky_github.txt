@@ -1,2 +1,1 @@
-Please replace this placeholder with your public repository link for the sticky notes app.
-Example: https://github.com/<your-username>/sticky-notes
+https://github.com/DeanuMurray/sticky-notes
