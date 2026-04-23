@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sticky Notes</title>
+  </head>
+  <body>
+    <h1>Sticky Notes</h1>
+    <p><a href="{% url 'notes:add' %}">Add note</a></p>
+    <ul>
+      {% for note in object_list %}
+        <li>
+          <strong>{{ note.title }}</strong> — {{ note.created_at }}
+          <div>{{ note.content|linebreaksbr }}</div>
+          <p>
+            <a href="{% url 'notes:edit' note.pk %}">Edit</a> |
+            <a href="{% url 'notes:delete' note.pk %}">Delete</a>
+          </p>
+        </li>
+      {% empty %}
+        <li>No notes yet.</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
