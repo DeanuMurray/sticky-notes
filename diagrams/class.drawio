@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" version="29.6.4">
+  <diagram id="class-sticky-notes" name="Class Diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Note Model -->
+        <mxCell id="cls-note" value="Note" style="swimlane;fontStyle=1;align=center;startSize=26;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="280" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-note-attrs" value="- id : int (PK, auto)&#xa;- title : CharField(max_length=200)&#xa;- content : TextField(blank=True)&#xa;- created_at : DateTimeField(auto_now_add)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-note">
+          <mxGeometry y="26" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-note-sep" value="" style="line;strokeColor=inherit;fillColor=none;rotatable=0;" vertex="1" parent="cls-note">
+          <mxGeometry y="106" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-note-methods" value="+ __str__() : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-note">
+          <mxGeometry y="116" width="280" height="69" as="geometry" />
+        </mxCell>
+
+        <!-- NoteForm -->
+        <mxCell id="cls-form" value="NoteForm" style="swimlane;fontStyle=1;align=center;startSize=26;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-form-attrs" value="(inherits ModelForm)&#xa;Meta.model = Note&#xa;Meta.fields = [title, content]&#xa;Meta.widgets: TextInput, Textarea" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-form">
+          <mxGeometry y="26" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-form-sep" value="" style="line;strokeColor=inherit;fillColor=none;rotatable=0;" vertex="1" parent="cls-form">
+          <mxGeometry y="106" width="300" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-form-methods" value="+ is_valid() : bool (inherited)&#xa;+ save(commit) : Note (inherited)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-form">
+          <mxGeometry y="116" width="300" height="64" as="geometry" />
+        </mxCell>
+
+        <!-- NoteListView -->
+        <mxCell id="cls-listview" value="NoteListView" style="swimlane;fontStyle=1;align=center;startSize=26;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="60" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-listview-attrs" value="model = Note&#xa;template_name = notes/note_list.html" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-listview">
+          <mxGeometry y="26" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-listview-sep" value="" style="line;strokeColor=inherit;fillColor=none;rotatable=0;" vertex="1" parent="cls-listview">
+          <mxGeometry y="76" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-listview-methods" value="(inherits ListView.get_queryset)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-listview">
+          <mxGeometry y="86" width="280" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- NoteCreateView -->
+        <mxCell id="cls-createview" value="NoteCreateView" style="swimlane;fontStyle=1;align=center;startSize=26;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="240" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-createview-attrs" value="model = Note&#xa;form_class = NoteForm&#xa;template_name = notes/note_form.html&#xa;success_url = /  (reverse_lazy)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-createview">
+          <mxGeometry y="26" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-createview-sep" value="" style="line;strokeColor=inherit;fillColor=none;rotatable=0;" vertex="1" parent="cls-createview">
+          <mxGeometry y="96" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-createview-methods" value="(inherits CreateView.post)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-createview">
+          <mxGeometry y="106" width="280" height="34" as="geometry" />
+        </mxCell>
+
+        <!-- NoteUpdateView -->
+        <mxCell id="cls-updateview" value="NoteUpdateView" style="swimlane;fontStyle=1;align=center;startSize=26;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="440" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-updateview-attrs" value="model = Note&#xa;form_class = NoteForm&#xa;template_name = notes/note_form.html&#xa;success_url = / (reverse_lazy)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-updateview">
+          <mxGeometry y="26" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-updateview-sep" value="" style="line;strokeColor=inherit;fillColor=none;rotatable=0;" vertex="1" parent="cls-updateview">
+          <mxGeometry y="96" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-updateview-methods" value="(inherits UpdateView.post)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-updateview">
+          <mxGeometry y="106" width="280" height="34" as="geometry" />
+        </mxCell>
+
+        <!-- NoteDeleteView -->
+        <mxCell id="cls-deleteview" value="NoteDeleteView" style="swimlane;fontStyle=1;align=center;startSize=26;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="640" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-deleteview-attrs" value="model = Note&#xa;template_name = notes/note_confirm_delete.html&#xa;success_url = / (reverse_lazy)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-deleteview">
+          <mxGeometry y="26" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-deleteview-sep" value="" style="line;strokeColor=inherit;fillColor=none;rotatable=0;" vertex="1" parent="cls-deleteview">
+          <mxGeometry y="86" width="280" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-deleteview-methods" value="(inherits DeleteView.post)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;overflow=hidden;rotatable=0;fontSize=11;" vertex="1" parent="cls-deleteview">
+          <mxGeometry y="96" width="280" height="34" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <!-- NoteForm uses Note -->
+        <mxCell id="rel-form-note" value="based on" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cls-form" target="cls-note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Views use Note -->
+        <mxCell id="rel-list-note" value="queries" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="cls-listview" target="cls-note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Views use NoteForm -->
+        <mxCell id="rel-create-form" value="uses" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cls-createview" target="cls-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-update-form" value="uses" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;" edge="1" parent="1" source="cls-updateview" target="cls-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-delete-note" value="deletes" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="cls-deleteview" target="cls-note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

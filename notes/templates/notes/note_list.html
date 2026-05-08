@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Sticky Notes — All Notes{% endblock title %}
+
+{% block content %}
+  <h2>All Notes</h2>
+  <ul class="note-list">
+    {% for note in object_list %}
+      <li>
+        <strong>{{ note.title }}</strong>
+        <p class="note-meta">Created: {{ note.created_at|date:"d M Y, H:i" }}</p>
+        <div>{{ note.content|linebreaksbr }}</div>
+        <p class="note-actions">
+          <a href="{% url 'notes:edit' note.pk %}">Edit</a>
+          <a href="{% url 'notes:delete' note.pk %}">Delete</a>
+        </p>
+      </li>
+    {% empty %}
+      <li>No notes yet. <a href="{% url 'notes:add' %}">Add your first note.</a></li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

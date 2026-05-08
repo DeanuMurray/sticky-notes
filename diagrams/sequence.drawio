@@ -1,0 +1,112 @@
+<mxfile host="app.diagrams.net" version="29.6.4">
+  <diagram id="sequence-add-note" name="Sequence Diagram - Add Note">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Participant headers -->
+        <mxCell id="p-user" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="60" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p-browser" value="Browser" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="170" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p-view" value="NoteCreateView" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="390" y="60" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p-form" value="NoteForm" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="630" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p-model" value="Note (Model)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="860" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p-db" value="Database" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines -->
+        <mxCell id="ll-user" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="70" y="140" as="sourcePoint"/><mxPoint x="70" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ll-browser" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="240" y="100" as="sourcePoint"/><mxPoint x="240" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ll-view" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="470" y="100" as="sourcePoint"/><mxPoint x="470" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ll-form" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="700" y="100" as="sourcePoint"/><mxPoint x="700" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ll-model" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="930" y="100" as="sourcePoint"/><mxPoint x="930" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="ll-db" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1160" y="100" as="sourcePoint"/><mxPoint x="1160" y="860" as="targetPoint"/></mxGeometry>
+        </mxCell>
+
+        <!-- Activation bars -->
+        <mxCell id="act-browser" value="" style="fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="234" y="155" width="12" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="act-view" value="" style="fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="464" y="240" width="12" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="act-form" value="" style="fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="694" y="370" width="12" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="act-model" value="" style="fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="924" y="540" width="12" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act-db" value="" style="fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1154" y="590" width="12" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Messages -->
+        <mxCell id="msg1" value="1: GET /add/" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="100" y="160" as="sourcePoint"/><mxPoint x="234" y="160" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg2" value="2: GET /add/ (HTTP request)" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="246" y="245" as="sourcePoint"/><mxPoint x="464" y="245" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg3" value="3: return empty form HTML" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="464" y="295" as="sourcePoint"/><mxPoint x="246" y="295" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg4" value="4: display form" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="234" y="330" as="sourcePoint"/><mxPoint x="100" y="330" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg5" value="5: fill in title &amp; content, submit" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="100" y="375" as="sourcePoint"/><mxPoint x="234" y="375" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg6" value="6: POST /add/" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="246" y="420" as="sourcePoint"/><mxPoint x="464" y="420" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg7" value="7: NoteForm(request.POST)" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="476" y="475" as="sourcePoint"/><mxPoint x="694" y="475" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg8" value="8: form.is_valid() → True" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="694" y="525" as="sourcePoint"/><mxPoint x="476" y="525" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg9" value="9: form.save() → Note instance" edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="476" y="570" as="sourcePoint"/><mxPoint x="924" y="570" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg10" value="10: INSERT INTO notes_note ..." edge="1" parent="1" style="endArrow=block;endFill=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="936" y="600" as="sourcePoint"/><mxPoint x="1154" y="600" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg11" value="11: row saved" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="1154" y="640" as="sourcePoint"/><mxPoint x="936" y="640" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg12" value="12: note saved" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="924" y="680" as="sourcePoint"/><mxPoint x="476" y="680" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg13" value="13: redirect to note list" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="464" y="730" as="sourcePoint"/><mxPoint x="246" y="730" as="targetPoint"/></mxGeometry>
+        </mxCell>
+        <mxCell id="msg14" value="14: 302 redirect → /" edge="1" parent="1" style="endArrow=open;endFill=0;dashed=1;html=1;rounded=0;fontSize=11;">
+          <mxGeometry relative="1" as="geometry"><mxPoint x="234" y="790" as="sourcePoint"/><mxPoint x="100" y="790" as="targetPoint"/></mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

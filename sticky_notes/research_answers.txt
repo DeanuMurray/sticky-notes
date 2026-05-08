@@ -1,0 +1,49 @@
+HTTP state & authentication:
+HTTP is a stateless protocol, so web applications preserve user state across request-response cycles by associating short, opaque identifiers with server-side state or by issuing signed tokens. For browser-based authentication the common pattern is a server session: the server stores session data (in memory, a database, or a shared cache like Redis) under a session id, and the client stores that id in a cookie (e.g., `sessionid`). Cookies used for authentication should be `Secure`, `HttpOnly`, and have an appropriate `SameSite` policy; sessions should be rotated at login and stored in a central store when scaling across app servers, avoiding sticky sessions when possible. For APIs, token-based approaches (signed JWTs, OAuth2 access/refresh tokens) let servers verify identity without server-side session lookups, but require careful handling of token expiration, rotation, and storage (avoid localStorage for sensitive tokens due to XSS). CSRF protection (for cookie-based auth) and TLS are essential, and servers should enforce short lifetimes, revocation strategies, and least-privilege session contents.
+
+Examples & commands:
+- Django (cookie sessions + CSRF): Django stores sessions server-side (DB/Cache) and uses the `sessionid` cookie; ensure middleware `django.contrib.sessions.middleware.SessionMiddleware` and `django.middleware.csrf.CsrfViewMiddleware` are enabled and templates include `{% csrf_token %}` in forms.
+- Secure cookie attributes (example headers): `Set-Cookie: sessionid=<id>; HttpOnly; Secure; SameSite=Lax`.
+- JWT (stateless API): issue short-lived access tokens and longer-lived refresh tokens; validate signature server-side and rotate refresh tokens on use. Example curl to call a bearer token API:
+
+```bash
+curl -H "Authorization: Bearer <ACCESS_TOKEN>" https://api.example.com/notes/
+```
+
+- Scaling: store sessions in Redis (Django: `SESSION_ENGINE = "django.contrib.sessions.backends.cache"` and configure `CACHES`) or use a token approach to avoid server-side session replication.
+
+
+Django migrations to MariaDB:
+To migrate a Django project to MariaDB you typically provision a MariaDB server and user, install a Python MySQL client (e.g., `mysqlclient` or use `PyMySQL`), and update `DATABASES` in `settings.py` to use `django.db.backends.mysql` with the database `NAME`, `USER`, `PASSWORD`, `HOST`, and `PORT`. Set `OPTIONS` for `charset='utf8mb4'` and SQL modes (e.g., `STRICT_TRANS_TABLES`) to match Django expectations. On a new deployment run `python manage.py makemigrations` and then `python manage.py migrate` to apply schema to MariaDB; for an existing SQLite (or other) dataset, export data via `manage.py dumpdata` and `loaddata` after migrating schema, or use careful data migration tools. In production, test migrations in staging first, take database backups before applying changes, run migrations during maintenance windows when needed, and handle risky schema changes (adding NOT NULL columns, big data backfills) as multi-step migrations to avoid downtime. Django’s MySQL backend is compatible with MariaDB, but verifying SQL modes, storage engine (InnoDB), and character sets prevents subtle runtime problems.
+
+Practical steps & snippets:
+- Install client: `pip install mysqlclient` (or `pip install pymysql` and add `import pymysql; pymysql.install_as_MySQLdb()` in `__init__.py`).
+- Example `DATABASES` snippet for `settings.py`:
+
+```python
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'sticky_notes',
+		'USER': 'sn_user',
+		'PASSWORD': 'secret',
+		'HOST': 'db.example.com',
+		'PORT': '3306',
+		'OPTIONS': {
+			'charset': 'utf8mb4',
+			'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+		},
+	}
+}
+```
+
+- Data migration path (existing SQLite to MariaDB):
+
+```bash
+python manage.py dumpdata --natural-primary --natural-foreign --indent 2 > all_data.json
+# create database and update settings.py
+python manage.py migrate
+python manage.py loaddata all_data.json
+```
+
+- Best practices: test in staging, backup with `mysqldump` before migrations, prefer small incremental schema changes, and set `innodb_large_prefix`/`innodb_file_format` if using older MariaDB and large text fields.
