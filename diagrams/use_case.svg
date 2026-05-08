@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="600" height="500" font-family="Arial, sans-serif">
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-size="16" font-weight="bold">Sticky Notes App – Use Case Diagram</text>
+
+  <!-- System boundary -->
+  <rect x="120" y="50" width="360" height="400" rx="10" ry="10"
+        fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="300" y="70" text-anchor="middle" font-size="12" fill="#555">Sticky Notes System</text>
+
+  <!-- Actor (User) -->
+  <!-- Head -->
+  <circle cx="55" cy="170" r="18" fill="none" stroke="#333" stroke-width="1.5"/>
+  <!-- Body -->
+  <line x1="55" y1="188" x2="55" y2="230" stroke="#333" stroke-width="1.5"/>
+  <!-- Arms -->
+  <line x1="55" y1="200" x2="30" y2="215" stroke="#333" stroke-width="1.5"/>
+  <line x1="55" y1="200" x2="80" y2="215" stroke="#333" stroke-width="1.5"/>
+  <!-- Legs -->
+  <line x1="55" y1="230" x2="35" y2="255" stroke="#333" stroke-width="1.5"/>
+  <line x1="55" y1="230" x2="75" y2="255" stroke="#333" stroke-width="1.5"/>
+  <text x="55" y="275" text-anchor="middle" font-size="12">User</text>
+
+  <!-- Use cases (ellipses) -->
+  <!-- View Notes -->
+  <ellipse cx="300" cy="130" rx="90" ry="25" fill="#dce9f8" stroke="#5588cc" stroke-width="1.5"/>
+  <text x="300" y="134" text-anchor="middle" font-size="12">View Notes</text>
+
+  <!-- Add Note -->
+  <ellipse cx="300" cy="210" rx="90" ry="25" fill="#dce9f8" stroke="#5588cc" stroke-width="1.5"/>
+  <text x="300" y="214" text-anchor="middle" font-size="12">Add Note</text>
+
+  <!-- Edit Note -->
+  <ellipse cx="300" cy="290" rx="90" ry="25" fill="#dce9f8" stroke="#5588cc" stroke-width="1.5"/>
+  <text x="300" y="294" text-anchor="middle" font-size="12">Edit Note</text>
+
+  <!-- Delete Note -->
+  <ellipse cx="300" cy="370" rx="90" ry="25" fill="#dce9f8" stroke="#5588cc" stroke-width="1.5"/>
+  <text x="300" y="374" text-anchor="middle" font-size="12">Delete Note</text>
+
+  <!-- Associations (User → Use cases) -->
+  <line x1="80" y1="170" x2="210" y2="130" stroke="#333" stroke-width="1"/>
+  <line x1="80" y1="185" x2="210" y2="210" stroke="#333" stroke-width="1"/>
+  <line x1="80" y1="200" x2="210" y2="285" stroke="#333" stroke-width="1"/>
+  <line x1="80" y1="215" x2="210" y2="365" stroke="#333" stroke-width="1"/>
+</svg>
